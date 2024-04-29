@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceService } from '../services/http-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   constructor(
-    private httpService: HttpServiceService,
+    private dashboardService: DashboardService,
     private toastr: ToastrService,
-    private router: Router,
+    private router: Router
   ) {}
 
   userCredential: any = [];
   userPolicyDetail: any = [];
-  policyId: any = [];
+  policyDetails: any = [];
 
   ngOnInit(): void {
     const userId = sessionStorage.getItem('id');
@@ -31,13 +31,12 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  goToPayment()
-  {
+  goToPayment() {
     this.router.navigate(['payment']);
   }
 
   getUserData(id: number): void {
-    this.httpService.getUserData(id).subscribe(
+    this.dashboardService.getUserData(id).subscribe(
       (data: any) => {
         this.userCredential = data;
         console.log('User data:', this.userCredential);
@@ -48,15 +47,17 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  policyDetails: any = [];
+
   getUserPolicy(id: number): void {
-    this.httpService.getPolicyofUser(id).subscribe(
+    this.dashboardService.getUserPolicy(id).subscribe(
       (dataArray: any[]) => {
         dataArray.forEach((data) => {
           const policyId = data.policyId;
           if (policyId !== undefined) {
             if (
-              !this.policyDetails.some((policy: any) => policy.policyId === policyId)
+              !this.policyDetails.some(
+                (policy: any) => policy.policyId === policyId
+              )
             ) {
               this.getPolicyDetail(policyId);
             }
@@ -76,14 +77,14 @@ export class DashboardComponent implements OnInit {
   }
 
   getPolicyDetail(id: number): void {
-    this.httpService.getPolicies(id).subscribe(
+    this.dashboardService.getPolicyDetail(id).subscribe(
       (data: any) => {
         this.policyDetails.push(data);
         console.log('Policy data:', this.policyDetails);
       },
       (error) => {
-        console.error('Error fetching user data:', error);
-        this.toastr.error('Error fetching user data', 'Error');
+        console.error('Error fetching policy data:', error);
+        this.toastr.error('Error fetching policy data', 'Error');
       }
     );
   }
