@@ -2,6 +2,28 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
 
+Below is the screenshot of the application and the instructions to run it. I have included Toastr package that pops a success or error message on different events i.e., Login in, Adding a payment method, Editing or Removing existing payment methods. I have also included parent-to-child as well as child-to-parent relationship. Payment component is the parent and payment detail component is the child. In the payment component you can perform CRUD operations. One user can have more than one policy too.
+
+## Landing Page - Before Login
+
+![alt text](https://github.com/shiv35674/iLink-Assessment-Frontend/blob/main/screenshot/Landing%20Page%20-%20BL.png)
+
+## Landing Page - After Login
+
+![alt text](https://github.com/shiv35674/iLink-Assessment-Frontend/blob/main/screenshot/Landing%20Page%20-%20AL.png)
+
+## Login Page
+
+![alt text](https://github.com/shiv35674/iLink-Assessment-Frontend/blob/main/screenshot/Login%20Page.png)
+
+## Dashboard Page
+
+![alt text](https://github.com/shiv35674/iLink-Assessment-Frontend/blob/main/screenshot/Dashboard%20Page.png)
+
+## Payment Page
+
+![alt text](https://github.com/shiv35674/iLink-Assessment-Frontend/blob/main/screenshot/Payment%20Page.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
