@@ -24,7 +24,7 @@
                 <div *ngIf=" cardcvv.invalid && (cardcvv.dirty || cardcvv.touched)" class="text-red-500">Please enter a valid 3-digit security code</div>
               </div>
               <div class="flex flex-col">
-                <label for="expDate" class="font-semibold mb-2">Valid Till</label>
+                <label for="expDate" class="font-semibold mb-2">Valid Till (MM/YY)</label>
                 <input type="text" id="expDate" name="expDate" class="px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full" [(ngModel)]="paymentDetail.userCardvalidity" #exp="ngModel" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}" placeholder="MM/YY">
                 <div *ngIf=" exp.invalid && (exp.dirty || exp.touched)" class="text-red-500">Please enter a valid expiration date (MM/YY)</div>
               </div>

@@ -31,7 +31,7 @@ export class AppComponent {
   }
   logOut()
   {
-    this.toastr.success('Successfully logged out!');
+    this.toastr.success('Successfully logged out! Keep visiting :))');
     sessionStorage.clear();
     this.router.navigate([""]);
   }

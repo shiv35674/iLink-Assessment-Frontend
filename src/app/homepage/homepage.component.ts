@@ -12,6 +12,10 @@ export class HomepageComponent {
   goToLogin() {
     this.router.navigate(['login']);
   }
+  goToPayments()
+  {
+    this.router.navigate(['payment']);
+  }
   goToDashboard()
   {
     this.router.navigate(['dashboard']);

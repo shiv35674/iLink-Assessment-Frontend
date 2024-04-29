@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private httpService: HttpServiceService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
   ) {}
 
   userCredential: any = [];
