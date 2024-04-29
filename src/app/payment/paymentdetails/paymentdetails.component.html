@@ -1,0 +1,51 @@
+
+
+<!-- <p>{{paymentMethod.userCardname}}</p>
+<p>{{paymentMethod.userCardnumber}}</p>
+<p>{{paymentMethod.userCvv}}</p>
+<p>{{paymentMethod.userCardvalidity}}</p> -->
+
+<div *ngIf="!editMode">
+    <table class="w-full">
+        <thead class="border-b-2 border-gray-300">
+            <tr>
+                <th class="font-bold py-2 px-4">Card Name</th>
+                <th class="font-bold py-2 px-4">Card Number</th>
+                <th class="font-bold py-2 px-4">Validity</th>
+                <th class="font-bold py-2 px-4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of paymentMethod; let i = index">
+                <td class="text-center py-2 px-4">{{ payment.userCardname }}</td>
+                <td class="text-center py-2 px-4">{{ payment.userCardnumber }}</td>
+                <td class="text-center py-2 px-4">{{ payment.userCardvalidity }}</td>
+                <td class="text-center py-2 px-4">
+                    <div class="my-2">
+                        <button class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 mx-1" (click)="editPayment(payment)">Edit</button>
+                        <button class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700 mx-1" (click)="removePayment(i)">Remove</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="editMode && editedPayment">
+    <h2 class="text-xl font-bold mb-4">Edit Details</h2>
+    <div class="flex flex-col space-y-4">
+    <label for="editName" class="text-lg">Card Name:</label>
+    <input type="text" id="editName" [(ngModel)]="editedPayment.userCardname" class="border border-gray-300 rounded-md px-3 py-2">
+
+    <label for="editNumber" class="text-lg">Card Number:</label>
+    <input type="text" id="editNumber" [(ngModel)]="editedPayment.userCardnumber" class="border border-gray-300 rounded-md px-3 py-2" pattern="[0-9]{16}" >
+
+    <label for="editValidity" class="text-lg">Card Validity:</label>
+    <input type="text" id="editValidity" [(ngModel)]="editedPayment.userCardvalidity" class="border border-gray-300 rounded-md px-3 py-2" pattern="[0-9]{3}">
+
+    <div class="flex space-x-4">
+      <button (click)="saveEdit(editedPayment)" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>
+      <button (click)="cancelEdit()" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancel</button>
+    </div>
+  </div>
+</div>

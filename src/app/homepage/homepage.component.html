@@ -1,0 +1,35 @@
+<section class="page_404">
+	<div class="container">
+		<div class="row">	
+		<div class="col-sm-12 ">
+		<div class="col-sm-10 col-sm-offset-1  text-center">
+		<div class="four_zero_four_bg">
+		</div>
+		<div class="contant_box_404">
+		<h1 class="text-bold text-3xl ">Hey there!</h1>
+		<ng-container *ngIf="!isAuthenticated()">
+		<br>
+			<h3 class="h2">
+			Look like you're lost
+			</h3>
+			
+			<p>Login yourself and explore the world of api calls and connectivity!</p>
+			
+			<button (click)="goToLogin()" class="text-blue-600 border border-blue-500 px-4 py-2 rounded-md mr-2 hover:bg-blue-500 hover:text-white my-10">Let's Connect</button>
+		</ng-container>
+		<ng-container *ngIf="isAuthenticated()">
+		<br>
+			<h3 class="h2">
+			Look like you've finally established connection with the server!!
+			</h3>
+			
+			<p>Have a look at your Dashboard or explore your various payment methods!</p>
+			
+			<button (click)="goToDashboard()"  class="text-blue-600 border border-blue-500 px-4 py-2 rounded-md mr-2 hover:bg-blue-500 hover:text-white my-10">Explore Dashboard</button>
+		</ng-container>
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</section>
