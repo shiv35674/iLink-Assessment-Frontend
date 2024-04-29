@@ -38,13 +38,15 @@
     <input type="text" id="editName" [(ngModel)]="editedPayment.userCardname" class="border border-gray-300 rounded-md px-3 py-2">
 
     <label for="editNumber" class="text-lg">Card Number:</label>
-    <input type="text" id="editNumber" [(ngModel)]="editedPayment.userCardnumber" class="border border-gray-300 rounded-md px-3 py-2" pattern="[0-9]{16}" >
+    <input type="text" id="editNumber" [(ngModel)]="editedPayment.userCardnumber" class="border border-gray-300 rounded-md px-3 py-2" #editNumber="ngModel" required pattern="[0-9]{16}" >
+    <div *ngIf=" editNumber.invalid && (editNumber.dirty || editNumber.touched)" class="text-red-500">Please enter a valid 16-digit card number</div>
 
     <label for="editValidity" class="text-lg">Card Validity:</label>
-    <input type="text" id="editValidity" [(ngModel)]="editedPayment.userCardvalidity" class="border border-gray-300 rounded-md px-3 py-2" pattern="[0-9]{3}">
+    <input type="text" id="editValidity" [(ngModel)]="editedPayment.userCardvalidity" class="border border-gray-300 rounded-md px-3 py-2" #editValid="ngModel" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}">
+    <div *ngIf=" editValid.invalid && (editValid.dirty || editValid.touched)" class="text-red-500">Please enter a valid expiration date (MM/YY)</div>
 
     <div class="flex space-x-4">
-      <button (click)="saveEdit(editedPayment)" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>
+      <button (click)="saveEdit(editedPayment)" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" [disabled]="!editNumber.valid || !editValid.valid">Save</button>
       <button (click)="cancelEdit()" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancel</button>
     </div>
   </div>
